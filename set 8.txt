@@ -1,0 +1,37 @@
+SQL> SET SERVEROUTPUT ON;
+SQL> CREATE OR REPLACE PROCEDURE msg(pname IN VARCHAR2)
+  2  IS BEGIN
+  3  dbms_output.put_line('welcome'||pname);
+  4  END;
+  5  /
+
+Procedure created.
+
+SQL> EXEC msg('tobin');
+welcometobin
+
+PL/SQL procedure successfully completed.
+
+SQL> CREATE OR REPLACE PROCEDURE msg(pname IN VARCHAR2, salary out number)
+  2  IS
+  3  BEGIN
+  4  SALARY:=10000;
+  5  dbms_output.put_line('welcome'||pname);
+  6  END;
+  7  /
+
+Procedure created.
+
+SQL> var sal number;
+SQL> EXEC msg('tobin',:sal);
+welcometobin
+
+PL/SQL procedure successfully completed.
+
+SQL> print sal;
+
+       SAL
+----------
+     10000
+
+SQL>

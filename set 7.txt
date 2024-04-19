@@ -1,0 +1,538 @@
+SQL> @C:\Users\student.MCALAB\Desktop\TOBIN\cycle2\3.sql
+
+PL/SQL procedure successfully completed.
+
+SQL> DECLARE
+  2  n_times NUMBER:=10;
+  3  BEGIN
+  4  FOR n_i IN 1..n_times LOOP
+  5  DBMS_OUTPUT.PUT_LINE(n_i);
+  6  END LOOP;
+  7  END;
+  8  /
+
+PL/SQL procedure successfully completed.
+
+SQL> @DECLARE
+SP2-0310: unable to open file "DECLARE.sql"
+SQL> n_times NUMBER:=10;
+SP2-0734: unknown command beginning "n_times NU..." - rest of line ignored.
+SQL> BEGIN
+  2  FOR n_i IN 1..n_times LOOP
+  3  DBMS_OUTPUT.PUT_LINE(n_i);
+  4  END LOOP;
+  5  END;
+  6  /
+FOR n_i IN 1..n_times LOOP
+              *
+ERROR at line 2:
+ORA-06550: line 2, column 15:
+PLS-00201: identifier 'N_TIMES' must be declared
+ORA-06550: line 2, column 1:
+PL/SQL: Statement ignored
+
+
+SQL> DECLARE
+  2  n_times NUMBER:=10;
+  3  BEGIN
+  4  FOR n_i IN 1..n_times LOOP
+  5  DBMS_OUTPUT.PUT_LINE(n_i);
+  6  END LOOP;
+  7  END;
+  8  /
+
+PL/SQL procedure successfully completed.
+
+SQL> @C:\Users\student.MCALAB\Desktop\TOBIN\cycle2\4.sql
+
+PL/SQL procedure successfully completed.
+
+SQL> @C:\Users\student.MCALAB\Desktop\TOBIN\cycle2\4.sql
+
+PL/SQL procedure successfully completed.
+
+SQL> @C:\Users\student.MCALAB\Desktop\TOBIN\cycle2\4.sql
+
+PL/SQL procedure successfully completed.
+
+SQL> @C:\Users\student.MCALAB\Desktop\TOBIN\cycle2\4.sql
+
+PL/SQL procedure successfully completed.
+
+SQL> DECLARE
+  2  n_times NUMBER:=6;
+  3  begin
+  4  for n_i in 2..n_times loop
+  5  dbms_output.put_line(n_i);
+  6  end loop;
+  7  end;
+  8  /
+
+PL/SQL procedure successfully completed.
+
+SQL> DECLARE
+  2  n NUMBER:=10;
+  3  BEGIN
+  4  for ni IN 1..N LOOP
+  5  DBMS_OUTPUT.PUT_LINE(ni);
+  6  END LOOP;
+  7  END;
+  8  /
+
+PL/SQL procedure successfully completed.
+
+SQL> DECLARE
+  2  n_times NUMBER:=10;
+  3  BEGIN
+  4  for ni IN 1..n_times LOOP
+  5  DBMS_OUTPUT.PUT_LINE(n_i);
+  6  END LOOP;
+  7  END;
+  8  /
+DBMS_OUTPUT.PUT_LINE(n_i);
+                     *
+ERROR at line 5:
+ORA-06550: line 5, column 22:
+PLS-00201: identifier 'N_I' must be declared
+ORA-06550: line 5, column 1:
+PL/SQL: Statement ignored
+
+
+SQL> DECLARE
+  2  n_times NUMBER:=10;
+  3  BEGIN
+  4  for n_i IN 1..n_times LOOP
+  5  DBMS_OUTPUT.PUT_LINE(n_i);
+  6  END LOOP;
+  7  END;
+  8  /
+
+PL/SQL procedure successfully completed.
+
+SQL> CREATE TABLE EMPLOYEE(snn number(3),fname varchar(20),lname varchar(20), salary number(38));
+CREATE TABLE EMPLOYEE(snn number(3),fname varchar(20),lname varchar(20), salary number(38))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> drop table EMPLOYEE;
+
+Table dropped.
+
+SQL> CREATE TABLE EMPLOYEE(snn number(3),fname varchar(20),lname varchar(20), salary number(38));
+
+Table created.
+
+SQL> INSERT INTO EMPLOYEE VALUES (&snn, '&fname','&lname',&salary);
+Enter value for snn: 101
+Enter value for fname: amrutha
+Enter value for lname: biju
+Enter value for salary: 75000
+old   1: INSERT INTO EMPLOYEE VALUES (&snn, '&fname','&lname',&salary)
+new   1: INSERT INTO EMPLOYEE VALUES (101, 'amrutha','biju',75000)
+
+1 row created.
+
+SQL> /
+Enter value for snn: 102
+Enter value for fname: anite
+Enter value for lname: jose
+Enter value for salary: 75000
+old   1: INSERT INTO EMPLOYEE VALUES (&snn, '&fname','&lname',&salary)
+new   1: INSERT INTO EMPLOYEE VALUES (102, 'anite','jose',75000)
+
+1 row created.
+
+SQL> /
+Enter value for snn: 103
+Enter value for fname: anna
+Enter value for lname: maria
+Enter value for salary: 75000
+old   1: INSERT INTO EMPLOYEE VALUES (&snn, '&fname','&lname',&salary)
+new   1: INSERT INTO EMPLOYEE VALUES (103, 'anna','maria',75000)
+
+1 row created.
+
+SQL> /
+Enter value for snn: 104
+Enter value for fname: bharathi
+Enter value for lname: s
+Enter value for salary: 75000
+old   1: INSERT INTO EMPLOYEE VALUES (&snn, '&fname','&lname',&salary)
+new   1: INSERT INTO EMPLOYEE VALUES (104, 'bharathi','s',75000)
+
+1 row created.
+
+SQL> DECLARE
+  2  v_name EMPLOYEE.fname%type;
+  3  v_job EMPLOYEE.job%type;
+  4  v_sal EMPLOYEE.salary%type;
+  5  begin
+  6  select fname,lname,salary into v_fname, v_lname,v_salary FROM EMPLOYEE WHERE ssn=102;
+  7  dbms_output.putline(v_fname||''||v_lname||''||v_salary);
+  8  end;
+  9  /
+v_job EMPLOYEE.job%type;
+               *
+ERROR at line 3:
+ORA-06550: line 3, column 16:
+PLS-00302: component 'JOB' must be declared
+ORA-06550: line 3, column 7:
+PL/SQL: Item ignored
+ORA-06550: line 6, column 78:
+PL/SQL: ORA-00904: "SSN": invalid identifier
+ORA-06550: line 6, column 1:
+PL/SQL: SQL Statement ignored
+ORA-06550: line 7, column 21:
+PLS-00201: identifier 'V_FNAME' must be declared
+ORA-06550: line 7, column 1:
+PL/SQL: Statement ignored
+
+
+SQL> DECLARE
+  2  v_name EMPLOYEE.fname%type;
+  3  v_lname EMPLOYEE.lname%type;
+  4  v_sal EMPLOYEE.salary%type;
+  5  begin
+  6  select fname,lname,salary into v_fname, v_lname,v_salary FROM EMPLOYEE WHERE ssn=102;
+  7  dbms_output.putline(v_fname||''||v_lname||''||v_salary);
+  8  end;
+  9  /
+select fname,lname,salary into v_fname, v_lname,v_salary FROM EMPLOYEE WHERE ssn=102;
+                                                                             *
+ERROR at line 6:
+ORA-06550: line 6, column 78:
+PL/SQL: ORA-00904: "SSN": invalid identifier
+ORA-06550: line 6, column 1:
+PL/SQL: SQL Statement ignored
+ORA-06550: line 7, column 21:
+PLS-00201: identifier 'V_FNAME' must be declared
+ORA-06550: line 7, column 1:
+PL/SQL: Statement ignored
+
+
+SQL> DECLARE
+  2  v_name EMPLOYEE.fname%type;
+  3  v_job EMPLOYEE.lname%type;
+  4  v_sal EMPLOYEE.salary%type;
+  5  begin
+  6  select fname,lname,salary into v_fname, v_lname,v_salary FROM EMPLOYEE WHERE ssn=102;
+  7  dbms_output.putline(v_fname||''||v_lname||''||v_salary);
+  8  end;
+  9  /
+select fname,lname,salary into v_fname, v_lname,v_salary FROM EMPLOYEE WHERE ssn=102;
+                                                                             *
+ERROR at line 6:
+ORA-06550: line 6, column 78:
+PL/SQL: ORA-00904: "SSN": invalid identifier
+ORA-06550: line 6, column 1:
+PL/SQL: SQL Statement ignored
+ORA-06550: line 7, column 21:
+PLS-00201: identifier 'V_FNAME' must be declared
+ORA-06550: line 7, column 1:
+PL/SQL: Statement ignored
+
+
+SQL> DECLARE
+  2  v_name EMPLOYEE.fname%type;
+  3  v_job EMPLOYEE.lname%type;
+  4  v_sal EMPLOYEE.salary%type;
+  5  begin
+  6  select fname,lname,salary into v_fname, v_lname,v_salary FROM EMPLOYEE WHERE snn=102;
+  7  dbms_output.putline(v_fname||''||v_lname||''||v_salary);
+  8  end;
+  9  /
+select fname,lname,salary into v_fname, v_lname,v_salary FROM EMPLOYEE WHERE snn=102;
+                               *
+ERROR at line 6:
+ORA-06550: line 6, column 32:
+PLS-00201: identifier 'V_FNAME' must be declared
+ORA-06550: line 6, column 58:
+PL/SQL: ORA-00904: : invalid identifier
+ORA-06550: line 6, column 1:
+PL/SQL: SQL Statement ignored
+ORA-06550: line 7, column 21:
+PLS-00201: identifier 'V_FNAME' must be declared
+ORA-06550: line 7, column 1:
+PL/SQL: Statement ignored
+
+
+SQL> SET SERVEROUTPUT ON;
+SQL> DECLARE
+  2  n_times NUMBER:=10;
+  3  BEGIN
+  4  FOR n_i IN 1..n_times LOOP
+  5  DBMS_OUTPUT.PUT_LINE(n_i);
+  6  END LOOP;
+  7  END;
+  8  /
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+PL/SQL procedure successfully completed.
+
+SQL> DECLARE
+  2  v_name EMPLOYEE.fname%type;
+  3  v_job EMPLOYEE.lname%type;
+  4  v_sal EMPLOYEE.salary%type;
+  5  begin
+  6  select fname,lname,salary into v_fname, v_lname,v_salary FROM EMPLOYEE WHERE snn=102;
+  7  dbms_output.putline(v_fname||''||v_lname||''||v_salary);
+  8  end;
+  9  /
+select fname,lname,salary into v_fname, v_lname,v_salary FROM EMPLOYEE WHERE snn=102;
+                               *
+ERROR at line 6:
+ORA-06550: line 6, column 32:
+PLS-00201: identifier 'V_FNAME' must be declared
+ORA-06550: line 6, column 58:
+PL/SQL: ORA-00904: : invalid identifier
+ORA-06550: line 6, column 1:
+PL/SQL: SQL Statement ignored
+ORA-06550: line 7, column 21:
+PLS-00201: identifier 'V_FNAME' must be declared
+ORA-06550: line 7, column 1:
+PL/SQL: Statement ignored
+
+
+SQL> DECLARE
+  2  v_name EMPLOYEE.fname%type;
+  3  v_job EMPLOYEE.lname%type;
+  4  v_sal EMPLOYEE.salary%type;
+  5  begin
+  6  select fname,lname,salary into v_fname, v_lname,v_salary FROM EMPLOYEE WHERE snn=102;
+  7  dbms_output.putline(v_name||''||v_job||''||v_sal);
+  8  end;
+  9  /
+select fname,lname,salary into v_fname, v_lname,v_salary FROM EMPLOYEE WHERE snn=102;
+                               *
+ERROR at line 6:
+ORA-06550: line 6, column 32:
+PLS-00201: identifier 'V_FNAME' must be declared
+ORA-06550: line 6, column 58:
+PL/SQL: ORA-00904: : invalid identifier
+ORA-06550: line 6, column 1:
+PL/SQL: SQL Statement ignored
+ORA-06550: line 7, column 13:
+PLS-00302: component 'PUTLINE' must be declared
+ORA-06550: line 7, column 1:
+PL/SQL: Statement ignored
+
+
+SQL> DECLARE
+  2  v_name EMPLOYEE.fname%type;
+  3  v_job EMPLOYEE.lname%type;
+  4  v_sal EMPLOYEE.salary%type;
+  5  begin
+  6  select fname,lname,salary into v_name, v_job,v_sal FROM EMPLOYEE WHERE snn=102;
+  7  dbms_output.putline(v_name||''||v_job||''||v_sal);
+  8  end;
+  9  /
+dbms_output.putline(v_name||''||v_job||''||v_sal);
+            *
+ERROR at line 7:
+ORA-06550: line 7, column 13:
+PLS-00302: component 'PUTLINE' must be declared
+ORA-06550: line 7, column 1:
+PL/SQL: Statement ignored
+
+
+SQL> DECLARE
+  2  v_name EMPLOYEE.fname%type;
+  3  v_job EMPLOYEE.lname%type;
+  4  v_sal EMPLOYEE.salary%type;
+  5  begin
+  6  select fname,lname,salary into v_name, v_job,v_sal FROM EMPLOYEE WHERE snn=102;
+  7  dbms_output.put_line(v_name||''||v_job||''||v_sal);
+  8  end;
+  9  /
+anitejose75000
+
+PL/SQL procedure successfully completed.
+
+SQL> DECLARE
+  2  v_name EMPLOYEE.fname%type;
+  3  v_job EMPLOYEE.lname%type;
+  4  v_sal EMPLOYEE.salary%type;
+  5  begin
+  6  select fname,lname,salary into v_name, v_job,v_sal FROM EMPLOYEE WHERE snn=102;
+  7  dbms_output.put_line(v_name||' '||v_job||' '||v_sal);
+  8  end;
+  9  /
+anite jose 75000
+
+PL/SQL procedure successfully completed.
+
+SQL> DECLARE
+  2  v_name EMPLOYEE.fname%type;
+  3  v_job EMPLOYEE.lname%type;
+  4  v_sal EMPLOYEE.salary%type;
+  5  begin
+  6  select fname,lname,salary into v_name, v_job,v_sal FROM EMPLOYEE WHERE snn=102;
+  7  dbms_output.put_line(fname||' '||name||' '||salary);
+  8  dbms_output.put_line(v_name||' '||v_job||' '||v_sal);
+  9  end;
+ 10  /
+dbms_output.put_line(fname||' '||name||' '||salary);
+                     *
+ERROR at line 7:
+ORA-06550: line 7, column 22:
+PLS-00201: identifier 'FNAME' must be declared
+ORA-06550: line 7, column 1:
+PL/SQL: Statement ignored
+
+
+SQL> DECLARE
+  2  v_name EMPLOYEE.fname%type;
+  3  v_job EMPLOYEE.lname%type;
+  4  v_sal EMPLOYEE.salary%type;
+  5  begin
+  6  select fname,lname,salary into v_name, v_job,v_sal FROM EMPLOYEE WHERE snn=102;
+  7  dbms_output.put_line('fname lname salary');
+  8  dbms_output.put_line(v_name||' '||v_job||' '||v_sal);
+  9  end;
+ 10  /
+fname lname salary
+anite jose 75000
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  n number(5):=&n;
+  3  s number:=0;
+  4  r number(2):=0;
+  5  begin
+  6  while n!0
+  7  loop
+  8  r:=mod(n,10);
+  9  s:=s+r;
+ 10  n:=trunc(n/10);
+ 11  end loop;
+ 12  dbms_output.put_line('sum of digits of given numbers is' ||s);
+ 13  end;
+ 14  /
+Enter value for n: 234
+old   2: n number(5):=&n;
+new   2: n number(5):=234;
+while n!0
+       *
+ERROR at line 6:
+ORA-06550: line 6, column 8:
+PLS-00103: Encountered the symbol "!" when expecting one of the following:
+. ( * @ % & = - + < / > at in is loop mod remainder not rem
+<an exponent (**)> <> or != or ~= >= <= <> and or like like2
+like4 likec between || multiset member submultiset
+The symbol "* was inserted before "!" to continue.
+
+
+SQL> declare
+  2  n number(5):=&n;
+  3  s number:=0;
+  4  r number(2):=0;
+  5  begin
+  6  while n!=0
+  7  loop
+  8  r:=mod(n,10);
+  9  s:=s+r;
+ 10  n:=trunc(n/10);
+ 11  end loop;
+ 12  dbms_output.put_line('sum of digits of given numbers is' ||s);
+ 13  end;
+ 14  /
+Enter value for n: 234
+old   2: n number(5):=&n;
+new   2: n number(5):=234;
+sum of digits of given numbers is9
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  a number(2):=&value_of_a;
+  3  b number(2):=&value_of_b;
+  4  begin;
+  5  if a<b then
+  6  dbms_output.put_line('smaller value is'||a);
+  7  elsif a>b then
+  8  dbms_output.put_line('smaller value is'||b);
+  9  else
+ 10  dbms_output.put_line('both no. are equal');
+ 11  end if;
+ 12  end;
+ 13  /
+Enter value for value_of_a: 13
+old   2: a number(2):=&value_of_a;
+new   2: a number(2):=13;
+Enter value for value_of_b: 13
+old   3: b number(2):=&value_of_b;
+new   3: b number(2):=13;
+begin;
+     *
+ERROR at line 4:
+ORA-06550: line 4, column 6:
+PLS-00103: Encountered the symbol ";" when expecting one of the following:
+( begin case declare exit for goto if loop mod null pragma
+raise return select update while with <an identifier>
+<a double-quoted delimited-identifier> <a bind variable> <<
+continue close current delete fetch lock insert open rollback
+savepoint set sql execute commit forall merge pipe purge
+
+
+SQL> declare
+  2  a number(2):=&value_of_a;
+  3  b number(2):=&value_of_b;
+  4  begin
+  5  if a<b then
+  6  dbms_output.put_line('smaller value is'||a);
+  7  elsif a>b then
+  8  dbms_output.put_line('smaller value is'||b);
+  9  else
+ 10  dbms_output.put_line('both no. are equal');
+ 11  end if;
+ 12  end;
+ 13  /
+Enter value for value_of_a: 13
+old   2: a number(2):=&value_of_a;
+new   2: a number(2):=13;
+Enter value for value_of_b: 13
+old   3: b number(2):=&value_of_b;
+new   3: b number(2):=13;
+both no. are equal
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  a number(2):=&value_of_a;
+  3  b number(2):=&value_of_b;
+  4  begin
+  5  if a<b then
+  6  dbms_output.put_line('smaller value is'||a);
+  7  elsif a>b then
+  8  dbms_output.put_line('smaller value is'||b);
+  9  else
+ 10  dbms_output.put_line('both no. are equal');
+ 11  end if;
+ 12  end;
+ 13  /
+Enter value for value_of_a: 13
+old   2: a number(2):=&value_of_a;
+new   2: a number(2):=13;
+Enter value for value_of_b: 25
+old   3: b number(2):=&value_of_b;
+new   3: b number(2):=25;
+smaller value is13
+
+PL/SQL procedure successfully completed.
+
+SQL>
+
+
+
